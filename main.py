@@ -34,4 +34,13 @@ def calc(x: int,y: int,operator,task: Union[str, None] = None):
     if operator == "+":
         return {"result":x+y}
     else:
-        return {"result":x-y}       
+        return {"result":x-y}    
+
+class LoginRequest(BaseModel):
+    user: str
+    password: str
+@app.post("/login")
+def login(x:str,data: LoginRequest):
+    if data.password == "hello":
+        return {"message": "Login Success"}
+    return {"message": "Failed, try again"} 
